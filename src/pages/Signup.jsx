@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Signup.css";
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    alert("Account Created Successfully!");
+  };
+
   return (
     <div className="signup-page">
-
       <div className="signup-container">
 
         {/* Left Side */}
         <div className="signup-left">
 
-          <p className="signup-tag">
-            BANK FRAUD DETECTION SYSTEM
-          </p>
-
           <h1>Create Account</h1>
 
           <p>
-            Join our secure fraud monitoring platform and
-            strengthen banking security through intelligent
-            real-time monitoring.
+            Join our fraud detection platform and gain access to
+            intelligent monitoring tools designed to enhance
+            banking security.
           </p>
 
           <div className="signup-features">
-            <p>✓ Fraud Monitoring</p>
-            <p>✓ Real-Time Alerts</p>
-            <p>✓ Secure Banking Dashboard</p>
+            <p>✓ Secure Registration</p>
+            <p>✓ Fraud Monitoring Access</p>
+            <p>✓ Real-Time Security Alerts</p>
           </div>
 
         </div>
@@ -34,38 +37,68 @@ const Signup = () => {
         <div className="signup-right">
 
           <p className="signup-badge">
-            CREATE NEW ACCOUNT
+            NEW USER REGISTRATION
           </p>
 
           <h2>Sign Up</h2>
 
-          <form>
+          <form onSubmit={handleSignup}>
 
             <input
               type="text"
-              placeholder="Enter Name"
+              placeholder="Full Name"
+              required
             />
 
             <input
               type="email"
-              placeholder="Enter Email"
+              placeholder="Email Address"
+              required
             />
 
-            <input
-              type="password"
-              placeholder="Create Password"
-            />
+            <div className="password-field">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Create Password"
+                required
+              />
 
-            <input
-              type="password"
-              placeholder="Confirm Password"
-            />
+              <span
+                className="show-password"
+                onClick={() =>
+                  setShowPassword(!showPassword)
+                }
+              >
+                {showPassword ? "Hide" : "Show"}
+              </span>
+            </div>
+
+            <div className="password-field">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm Password"
+                required
+              />
+
+              <span
+                className="show-password"
+                onClick={() =>
+                  setShowConfirmPassword(!showConfirmPassword)
+                }
+              >
+                {showConfirmPassword ? "Hide" : "Show"}
+              </span>
+            </div>
 
             <button type="submit">
               Create Account
             </button>
 
           </form>
+
+          <div className="security-note">
+            🔒 Secure User Registration
+          </div>
 
           <p className="login-link">
             Already have an account?
@@ -75,7 +108,6 @@ const Signup = () => {
         </div>
 
       </div>
-
     </div>
   );
 };

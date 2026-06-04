@@ -1,66 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Login.css";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    alert("Login functionality will be connected to backend in Step 4");
+  };
+
   return (
-
-    
     <div className="login-page">
-
       <div className="login-container">
 
-
+        {/* Left Side */}
         <div className="login-left">
-          <h1>Welcome Back</h1>
+        <h1>Login Securely</h1>
 
-          <p>
-            Monitor suspicious transactions, manage fraud alerts,
-and strengthen banking security through intelligent
-real-time monitoring.
-          </p>
+<p>
+  Access your fraud monitoring dashboard, review alerts,
+  and manage banking security operations in real time.
+</p>
+
+
+          <div className="login-features">
+            <p>✓ Fraud Monitoring</p>
+            <p>✓ Real-Time Alerts</p>
+            <p>✓ Secure Banking Dashboard</p>
+          </div>
         </div>
 
+        {/* Right Side */}
         <div className="login-right">
-           <p className="login-badge">
-  Secure Banking Access
-</p>
+
+          <p className="login-badge">
+            Secure Banking Access
+          </p>
+
           <h2>Login</h2>
 
-          <form>
+          <form onSubmit={handleLogin}>
 
             <input
               type="email"
               placeholder="Enter Email"
+              required
             />
 
-            <input
-              type="password"
-              placeholder="Enter Password"
-            />
-                <div className="remember">
-  <label>
-    <input type="checkbox" />
-    Remember Me
-  </label>
-</div>
+            <div className="password-field">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter Password"
+                required
+              />
+
+              <span
+                className="show-password"
+                onClick={() =>
+                  setShowPassword(!showPassword)
+                }
+              >
+                {showPassword ? "Hide" : "Show"}
+              </span>
+            </div>
+
+            <div className="login-options">
+
+              <label>
+                <input type="checkbox" />
+                Remember Me
+              </label>
+
+              <a href="#">
+                Forgot Password?
+              </a>
+
+            </div>
+
             <button type="submit">
-              Login
+              Login Securely
             </button>
 
           </form>
 
-          <p className="forgot">
-            Forgot Password?
-          </p>
+          <div className="security-note">
+            🔒 Bank-Level Security Protection
+          </div>
 
           <p className="signup-link">
-            Don't have an account? <a href="/signup">Sign Up</a>
+            Don't have an account?
+            <a href="/signup"> Sign Up</a>
           </p>
 
         </div>
 
       </div>
-
     </div>
   );
 };
