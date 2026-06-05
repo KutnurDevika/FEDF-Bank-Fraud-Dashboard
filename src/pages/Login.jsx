@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import "../styles/Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    alert("Login functionality will be connected to backend in Step 4");
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="login-page">
