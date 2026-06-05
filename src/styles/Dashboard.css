@@ -152,3 +152,264 @@
     gap:20px;
   }
 }
+
+/* ===========================
+   TABLE SECTIONS
+=========================== */
+
+.table-section{
+  background:white;
+  margin-top:25px;
+  border-radius:20px;
+  padding:25px;
+  overflow-x:auto;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.section-header h2{
+  color:#0f172a;
+}
+
+.section-header span{
+  color:#64748b;
+  font-size:0.9rem;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+table th{
+  background:#f8fafc;
+  padding:15px;
+  text-align:left;
+  color:#334155;
+  font-weight:600;
+}
+
+table td{
+  padding:15px;
+  border-bottom:1px solid #e2e8f0;
+}
+
+table tr:hover{
+  background:#f8fafc;
+}
+
+/* ===========================
+   BADGES
+=========================== */
+
+.badge{
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:0.8rem;
+  font-weight:600;
+}
+
+.high{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.critical{
+  background:#fecaca;
+  color:#991b1b;
+}
+
+.medium{
+  background:#fef3c7;
+  color:#d97706;
+}
+
+.active{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.investigate{
+  background:#dbeafe;
+  color:#2563eb;
+}
+
+.resolved{
+  background:#f1f5f9;
+  color:#475569;
+}
+
+/* ===========================
+   ANALYTICS
+=========================== */
+
+.analytics-section,
+.monitoring-section,
+.activity-section,
+.insights-section{
+  background:white;
+  border-radius:20px;
+  padding:25px;
+}
+
+.analytics-section h2,
+.monitoring-section h2,
+.activity-section h2,
+.insights-section h2{
+  margin-bottom:20px;
+  color:#0f172a;
+}
+
+.metric{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid #e2e8f0;
+}
+
+.metric:last-child{
+  border-bottom:none;
+}
+
+/* ===========================
+   MONITORING
+=========================== */
+
+.monitor-item{
+  background:#f8fafc;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:12px;
+  font-weight:500;
+}
+
+.monitor-item:last-child{
+  margin-bottom:0;
+}
+
+/* ===========================
+   ACTIVITY
+=========================== */
+
+.activity-section ul{
+  list-style:none;
+}
+
+.activity-section li{
+  padding:14px;
+  margin-bottom:12px;
+  background:#f8fafc;
+  border-radius:10px;
+}
+
+.activity-section li:last-child{
+  margin-bottom:0;
+}
+
+/* ===========================
+   INSIGHTS
+=========================== */
+
+.insight-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.insight-card{
+  background:#f8fafc;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.insight-card h3{
+  color:#2563eb;
+  margin-bottom:8px;
+  font-size:1.5rem;
+}
+
+.insight-card p{
+  color:#64748b;
+  font-size:0.9rem;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.dashboard-footer{
+  margin-top:30px;
+  background:#0f172a;
+  color:white;
+  padding:20px 30px;
+  border-radius:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.dashboard-footer span{
+  color:#22c55e;
+  font-weight:600;
+}
+
+/* ===========================
+   HOVER EFFECTS
+=========================== */
+
+.table-section,
+.analytics-section,
+.monitoring-section,
+.activity-section,
+.insights-section,
+.insight-card{
+  transition:all .3s ease;
+}
+
+.table-section:hover,
+.analytics-section:hover,
+.monitoring-section:hover,
+.activity-section:hover,
+.insights-section:hover{
+  transform:translateY(-3px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+  .insight-grid{
+    grid-template-columns:1fr;
+  }
+
+  .dashboard-footer{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+  }
+}
+
+@media(max-width:768px){
+
+  .section-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  table{
+    min-width:700px;
+  }
+
+  .table-section{
+    overflow-x:auto;
+  }
+}
