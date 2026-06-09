@@ -2,6 +2,84 @@ import React from "react";
 import "../styles/Dashboard.css";
 
 function Dashboard() {
+
+  const stats = [
+    { value: "247", title: "Active Fraud Alerts" },
+    { value: "1,84,392", title: "Transactions Monitored" },
+    { value: "38", title: "High Risk Cases" },
+    { value: "98.7%", title: "Detection Accuracy" }
+  ];
+
+  const alerts = [
+    {
+      id: "ALT-00192",
+      type: "Suspicious Login",
+      risk: "High",
+      status: "Active"
+    },
+    {
+      id: "ALT-00191",
+      type: "Large Transfer",
+      risk: "Critical",
+      status: "Investigating"
+    },
+    {
+      id: "ALT-00190",
+      type: "Multiple Failed Logins",
+      risk: "Medium",
+      status: "Resolved"
+    }
+  ];
+
+  const transactions = [
+    {
+      id: "TXN-88412",
+      customer: "Arjun Mehta",
+      amount: "₹4,82,000",
+      status: "Flagged"
+    },
+    {
+      id: "TXN-88411",
+      customer: "Priya Sharma",
+      amount: "₹1,25,500",
+      status: "Clear"
+    },
+    {
+      id: "TXN-88410",
+      customer: "Rahul Gupta",
+      amount: "₹9,40,000",
+      status: "Review"
+    }
+  ];
+
+  const analytics = [
+    "Fraud Detection Accuracy - 98.7%",
+    "Alert Resolution Rate - 87.4%",
+    "Monitoring Performance - 94.1%",
+    "System Health Score - 99.2%"
+  ];
+
+  const monitoring = [
+    "Monitoring Active",
+    "Alert Engine Running",
+    "Security Systems Online",
+    "Database Connected"
+  ];
+
+  const activities = [
+    "Alert Generated",
+    "Fraud Case Investigated",
+    "Transaction Flagged",
+    "Account Secured"
+  ];
+
+  const insights = [
+    "Total Alerts Today: 247",
+    "Fraud Prevention Rate: 98.7%",
+    "Transactions Under Review: 62",
+    "Security Recommendations: 5"
+  ];
+
   return (
     <div className="dashboard">
 
@@ -9,6 +87,7 @@ function Dashboard() {
       <div className="dashboard-header">
         <div>
           <h1>🛡️ Bank Fraud Detection Alert Dashboard</h1>
+
           <p>
             Monitor fraud alerts, suspicious transactions and banking
             security activities in real time.
@@ -17,6 +96,7 @@ function Dashboard() {
 
         <div className="analyst">
           <span className="live">● Live Monitoring</span>
+
           <div>
             <h4>Security Analyst</h4>
             <p>5 June 2026 • 10:48 AM</p>
@@ -24,32 +104,17 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Stats */}
+      {/* Statistics */}
       <div className="stats-grid">
-
-        <div className="stat-card">
-          <h2>247</h2>
-          <p>Active Fraud Alerts</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>1,84,392</h2>
-          <p>Transactions Monitored</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>38</h2>
-          <p>High Risk Cases</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>98.7%</h2>
-          <p>Detection Accuracy</p>
-        </div>
-
+        {stats.map((stat, index) => (
+          <div className="stat-card" key={index}>
+            <h2>{stat.value}</h2>
+            <p>{stat.title}</p>
+          </div>
+        ))}
       </div>
 
-      {/* Risk Analysis + Actions */}
+      {/* Risk Analysis + Quick Actions */}
       <div className="dashboard-row">
 
         <div className="card">
@@ -92,7 +157,7 @@ function Dashboard() {
 
       </div>
 
-      {/* Fraud Alerts Table */}
+      {/* Fraud Alerts */}
       <div className="card">
         <h2>Recent Fraud Alerts</h2>
 
@@ -107,31 +172,19 @@ function Dashboard() {
           </thead>
 
           <tbody>
-            <tr>
-              <td>ALT-00192</td>
-              <td>Suspicious Login</td>
-              <td>High</td>
-              <td>Active</td>
-            </tr>
-
-            <tr>
-              <td>ALT-00191</td>
-              <td>Large Transfer</td>
-              <td>Critical</td>
-              <td>Investigating</td>
-            </tr>
-
-            <tr>
-              <td>ALT-00190</td>
-              <td>Multiple Failed Logins</td>
-              <td>Medium</td>
-              <td>Resolved</td>
-            </tr>
+            {alerts.map((alert) => (
+              <tr key={alert.id}>
+                <td>{alert.id}</td>
+                <td>{alert.type}</td>
+                <td>{alert.risk}</td>
+                <td>{alert.status}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* Transactions Table */}
+      {/* Transactions */}
       <div className="card">
         <h2>Recent Transactions</h2>
 
@@ -146,26 +199,14 @@ function Dashboard() {
           </thead>
 
           <tbody>
-            <tr>
-              <td>TXN-88412</td>
-              <td>Arjun Mehta</td>
-              <td>₹4,82,000</td>
-              <td>Flagged</td>
-            </tr>
-
-            <tr>
-              <td>TXN-88411</td>
-              <td>Priya Sharma</td>
-              <td>₹1,25,500</td>
-              <td>Clear</td>
-            </tr>
-
-            <tr>
-              <td>TXN-88410</td>
-              <td>Rahul Gupta</td>
-              <td>₹9,40,000</td>
-              <td>Review</td>
-            </tr>
+            {transactions.map((txn) => (
+              <tr key={txn.id}>
+                <td>{txn.id}</td>
+                <td>{txn.customer}</td>
+                <td>{txn.amount}</td>
+                <td>{txn.status}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -176,20 +217,18 @@ function Dashboard() {
         <div className="card">
           <h2>Fraud Analytics</h2>
 
-          <p>Fraud Detection Accuracy - 98.7%</p>
-          <p>Alert Resolution Rate - 87.4%</p>
-          <p>Monitoring Performance - 94.1%</p>
-          <p>System Health Score - 99.2%</p>
+          {analytics.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))}
         </div>
 
         <div className="card">
           <h2>Security Monitoring</h2>
 
           <ul>
-            <li>Monitoring Active</li>
-            <li>Alert Engine Running</li>
-            <li>Security Systems Online</li>
-            <li>Database Connected</li>
+            {monitoring.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </div>
 
@@ -202,25 +241,22 @@ function Dashboard() {
           <h2>Recent Activity</h2>
 
           <ul>
-            <li>Alert Generated</li>
-            <li>Fraud Case Investigated</li>
-            <li>Transaction Flagged</li>
-            <li>Account Secured</li>
+            {activities.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </div>
 
         <div className="card">
           <h2>Banking Security Insights</h2>
 
-          <p>Total Alerts Today: 247</p>
-          <p>Fraud Prevention Rate: 98.7%</p>
-          <p>Transactions Under Review: 62</p>
-          <p>Security Recommendations: 5</p>
+          {insights.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))}
         </div>
 
       </div>
 
-    
     </div>
   );
 }
