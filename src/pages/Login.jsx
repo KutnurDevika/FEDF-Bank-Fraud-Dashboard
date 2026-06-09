@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/Login.css";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const handleLogin = (e) => {
+  e.preventDefault();
+  navigate("/dashboard");
+};
 
   return (
     <div className="login-page">
