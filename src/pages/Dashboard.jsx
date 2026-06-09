@@ -1,7 +1,20 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 
 function Dashboard() {
+
+  const navigate = useNavigate();
+
+  // Protect Dashboard
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    return <Navigate to="/login" />;
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  };
 
   const stats = [
     { value: "247", title: "Active Fraud Alerts" },
@@ -85,6 +98,7 @@ function Dashboard() {
 
       {/* Header */}
       <div className="dashboard-header">
+
         <div>
           <h1>🛡️ Bank Fraud Detection Alert Dashboard</h1>
 
@@ -95,29 +109,44 @@ function Dashboard() {
         </div>
 
         <div className="analyst">
-          <span className="live">● Live Monitoring</span>
+
+          <span className="live">
+            ● Live Monitoring
+          </span>
 
           <div>
             <h4>Security Analyst</h4>
             <p>5 June 2026 • 10:48 AM</p>
           </div>
+
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+
         </div>
+
       </div>
 
       {/* Statistics */}
       <div className="stats-grid">
+
         {stats.map((stat, index) => (
           <div className="stat-card" key={index}>
             <h2>{stat.value}</h2>
             <p>{stat.title}</p>
           </div>
         ))}
+
       </div>
 
       {/* Risk Analysis + Quick Actions */}
       <div className="dashboard-row">
 
         <div className="card">
+
           <h2>Fraud Risk Analysis</h2>
 
           <div className="risk-item">
@@ -140,9 +169,11 @@ function Dashboard() {
               <div className="fill low"></div>
             </div>
           </div>
+
         </div>
 
         <div className="card">
+
           <h2>Quick Actions</h2>
 
           <div className="actions-grid">
@@ -153,12 +184,14 @@ function Dashboard() {
             <button>Security Logs</button>
             <button>Risk Assessment</button>
           </div>
+
         </div>
 
       </div>
 
       {/* Fraud Alerts */}
       <div className="card">
+
         <h2>Recent Fraud Alerts</h2>
 
         <table>
@@ -172,6 +205,7 @@ function Dashboard() {
           </thead>
 
           <tbody>
+
             {alerts.map((alert) => (
               <tr key={alert.id}>
                 <td>{alert.id}</td>
@@ -180,12 +214,15 @@ function Dashboard() {
                 <td>{alert.status}</td>
               </tr>
             ))}
+
           </tbody>
         </table>
+
       </div>
 
       {/* Transactions */}
       <div className="card">
+
         <h2>Recent Transactions</h2>
 
         <table>
@@ -199,6 +236,7 @@ function Dashboard() {
           </thead>
 
           <tbody>
+
             {transactions.map((txn) => (
               <tr key={txn.id}>
                 <td>{txn.id}</td>
@@ -207,22 +245,27 @@ function Dashboard() {
                 <td>{txn.status}</td>
               </tr>
             ))}
+
           </tbody>
         </table>
+
       </div>
 
       {/* Analytics + Security */}
       <div className="dashboard-row">
 
         <div className="card">
+
           <h2>Fraud Analytics</h2>
 
           {analytics.map((item, index) => (
             <p key={index}>{item}</p>
           ))}
+
         </div>
 
         <div className="card">
+
           <h2>Security Monitoring</h2>
 
           <ul>
@@ -230,6 +273,7 @@ function Dashboard() {
               <li key={index}>{item}</li>
             ))}
           </ul>
+
         </div>
 
       </div>
@@ -238,6 +282,7 @@ function Dashboard() {
       <div className="dashboard-row">
 
         <div className="card">
+
           <h2>Recent Activity</h2>
 
           <ul>
@@ -245,14 +290,17 @@ function Dashboard() {
               <li key={index}>{item}</li>
             ))}
           </ul>
+
         </div>
 
         <div className="card">
+
           <h2>Banking Security Insights</h2>
 
           {insights.map((item, index) => (
             <p key={index}>{item}</p>
           ))}
+
         </div>
 
       </div>

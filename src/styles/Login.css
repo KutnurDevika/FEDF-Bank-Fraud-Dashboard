@@ -226,3 +226,10 @@ button:hover{
     font-size:3rem;
   }
 }
+.error{
+  color:#dc2626;
+  text-align:center;
+  margin-top:15px;
+  font-size:14px;
+  font-weight:600;
+}
