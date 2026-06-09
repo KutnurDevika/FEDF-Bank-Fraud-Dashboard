@@ -258,3 +258,55 @@ tr:hover {
 .logout-btn:hover{
   background:#dc2626;
 }
+.alert-controls{
+  display:flex;
+  gap:15px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.alert-controls input{
+  flex:1;
+  min-width:250px;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+}
+
+.alert-controls select{
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+}
+
+.alert-count{
+  margin-bottom:15px;
+  font-weight:600;
+  color:#475569;
+}
+.alert-controls{
+  display:flex;
+  gap:15px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.alert-controls input{
+  flex:1;
+  min-width:250px;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+}
+
+.alert-controls select{
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+}
+
+.alert-count{
+  margin-bottom:15px;
+  font-weight:600;
+  color:#475569;
+}

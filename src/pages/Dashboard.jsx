@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 
@@ -6,15 +6,58 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
-  // Protect Dashboard
   if (localStorage.getItem("isLoggedIn") !== "true") {
     return <Navigate to="/login" />;
   }
+
+  const user = JSON.parse(
+    localStorage.getItem("user")
+  );
+
+  const [search, setSearch] = useState("");
+  const [riskFilter, setRiskFilter] = useState("All");
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     navigate("/login");
   };
+
+  const generateAlert = () => {
+
+  const randomId =
+    "ALT-" + Math.floor(Math.random() * 100000);
+
+  const alertTypes = [
+    "Suspicious Login",
+    "Large Transfer",
+    "Multiple Failed Logins",
+    "Unusual Transaction"
+  ];
+
+  const risks = [
+    "High",
+    "Critical",
+    "Medium"
+  ];
+
+  const newAlert = {
+    id: randomId,
+    type: alertTypes[
+      Math.floor(Math.random() * alertTypes.length)
+    ],
+    risk: risks[
+      Math.floor(Math.random() * risks.length)
+    ],
+    status: "Active"
+  };
+
+  setAlerts((prevAlerts) => [
+  newAlert,
+  ...prevAlerts
+]);
+
+  alert("🚨 Fraud Alert Generated!");
+};
 
   const stats = [
     { value: "247", title: "Active Fraud Alerts" },
@@ -23,26 +66,26 @@ function Dashboard() {
     { value: "98.7%", title: "Detection Accuracy" }
   ];
 
-  const alerts = [
-    {
-      id: "ALT-00192",
-      type: "Suspicious Login",
-      risk: "High",
-      status: "Active"
-    },
-    {
-      id: "ALT-00191",
-      type: "Large Transfer",
-      risk: "Critical",
-      status: "Investigating"
-    },
-    {
-      id: "ALT-00190",
-      type: "Multiple Failed Logins",
-      risk: "Medium",
-      status: "Resolved"
-    }
-  ];
+  const [alerts, setAlerts] = useState([
+  {
+    id: "ALT-00192",
+    type: "Suspicious Login",
+    risk: "High",
+    status: "Active"
+  },
+  {
+    id: "ALT-00191",
+    type: "Large Transfer",
+    risk: "Critical",
+    status: "Investigating"
+  },
+  {
+    id: "ALT-00190",
+    type: "Multiple Failed Logins",
+    risk: "Medium",
+    status: "Resolved"
+  }
+]);
 
   const transactions = [
     {
@@ -93,6 +136,20 @@ function Dashboard() {
     "Security Recommendations: 5"
   ];
 
+  const filteredAlerts = alerts.filter((alert) => {
+
+    const matchesSearch =
+      alert.id.toLowerCase().includes(
+        search.toLowerCase()
+      );
+
+    const matchesRisk =
+      riskFilter === "All" ||
+      alert.risk === riskFilter;
+
+    return matchesSearch && matchesRisk;
+  });
+
   return (
     <div className="dashboard">
 
@@ -103,9 +160,13 @@ function Dashboard() {
           <h1>🛡️ Bank Fraud Detection Alert Dashboard</h1>
 
           <p>
-            Monitor fraud alerts, suspicious transactions and banking
-            security activities in real time.
+            Monitor fraud alerts, suspicious transactions
+            and banking security activities in real time.
           </p>
+
+          <h3>
+            Welcome, {user?.name}
+          </h3>
         </div>
 
         <div className="analyst">
@@ -134,7 +195,10 @@ function Dashboard() {
       <div className="stats-grid">
 
         {stats.map((stat, index) => (
-          <div className="stat-card" key={index}>
+          <div
+            className="stat-card"
+            key={index}
+          >
             <h2>{stat.value}</h2>
             <p>{stat.title}</p>
           </div>
@@ -142,7 +206,7 @@ function Dashboard() {
 
       </div>
 
-      {/* Risk Analysis + Quick Actions */}
+      {/* Risk + Actions */}
       <div className="dashboard-row">
 
         <div className="card">
@@ -173,17 +237,34 @@ function Dashboard() {
         </div>
 
         <div className="card">
+<h2>Quick Actions</h2>
+        <div className="actions-grid">
 
-          <h2>Quick Actions</h2>
+  <button onClick={generateAlert}>
+    Generate Alert
+  </button>
 
-          <div className="actions-grid">
-            <button>Generate Alert</button>
-            <button>View Reports</button>
-            <button>Monitor Transactions</button>
-            <button>Export Data</button>
-            <button>Security Logs</button>
-            <button>Risk Assessment</button>
-          </div>
+  <button>
+    View Reports
+  </button>
+
+  <button>
+    Monitor Transactions
+  </button>
+
+  <button>
+    Export Data
+  </button>
+
+  <button>
+    Security Logs
+  </button>
+
+  <button>
+    Risk Assessment
+  </button>
+
+</div>
 
         </div>
 
@@ -194,7 +275,48 @@ function Dashboard() {
 
         <h2>Recent Fraud Alerts</h2>
 
+        <div className="alert-controls">
+
+          <input
+            type="text"
+            placeholder="Search Alert ID..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+          />
+
+          <select
+            value={riskFilter}
+            onChange={(e) =>
+              setRiskFilter(e.target.value)
+            }
+          >
+            <option value="All">
+              All Risks
+            </option>
+
+            <option value="High">
+              High
+            </option>
+
+            <option value="Medium">
+              Medium
+            </option>
+
+            <option value="Critical">
+              Critical
+            </option>
+          </select>
+
+        </div>
+
+        <p className="alert-count">
+          Showing {filteredAlerts.length} alerts
+        </p>
+
         <table>
+
           <thead>
             <tr>
               <th>Alert ID</th>
@@ -204,18 +326,31 @@ function Dashboard() {
             </tr>
           </thead>
 
-          <tbody>
+   <tbody>
 
-            {alerts.map((alert) => (
-              <tr key={alert.id}>
-                <td>{alert.id}</td>
-                <td>{alert.type}</td>
-                <td>{alert.risk}</td>
-                <td>{alert.status}</td>
-              </tr>
-            ))}
+  {filteredAlerts.length === 0 ? (
 
-          </tbody>
+    <tr>
+      <td colSpan="4">
+        No fraud alerts found
+      </td>
+    </tr>
+
+  ) : (
+
+    filteredAlerts.map((alert) => (
+      <tr key={alert.id}>
+        <td>{alert.id}</td>
+        <td>{alert.type}</td>
+        <td>{alert.risk}</td>
+        <td>{alert.status}</td>
+      </tr>
+    ))
+
+  )}
+
+</tbody>
+
         </table>
 
       </div>
@@ -226,6 +361,7 @@ function Dashboard() {
         <h2>Recent Transactions</h2>
 
         <table>
+
           <thead>
             <tr>
               <th>ID</th>
@@ -247,6 +383,7 @@ function Dashboard() {
             ))}
 
           </tbody>
+
         </table>
 
       </div>
