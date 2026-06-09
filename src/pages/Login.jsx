@@ -4,8 +4,10 @@ import "../styles/Login.css";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -13,11 +15,24 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
+    const user = JSON.parse(
+      localStorage.getItem("user")
+    );
+
+    if (!user) {
+      setError("Please create an account first");
+      return;
+    }
+
     if (
-      email === "admin@gmail.com" &&
-      password === "admin123"
+      email === user.email &&
+      password === user.password
     ) {
-      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem(
+        "isLoggedIn",
+        "true"
+      );
+
       navigate("/dashboard");
     } else {
       setError("Invalid Email or Password");
@@ -35,8 +50,9 @@ const Login = () => {
           <h1>Login Securely</h1>
 
           <p>
-            Access your fraud monitoring dashboard, review alerts,
-            and manage banking security operations in real time.
+            Access your fraud monitoring dashboard,
+            review alerts, and manage banking
+            security operations in real time.
           </p>
 
           <div className="login-features">
@@ -62,27 +78,39 @@ const Login = () => {
               type="email"
               placeholder="Enter Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
               required
             />
 
             <div className="password-field">
 
               <input
-                type={showPassword ? "text" : "password"}
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
                 placeholder="Enter Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
                 required
               />
 
               <span
                 className="show-password"
                 onClick={() =>
-                  setShowPassword(!showPassword)
+                  setShowPassword(
+                    !showPassword
+                  )
                 }
               >
-                {showPassword ? "Hide" : "Show"}
+                {showPassword
+                  ? "Hide"
+                  : "Show"}
               </span>
 
             </div>
@@ -118,7 +146,10 @@ const Login = () => {
 
           <p className="signup-link">
             Don't have an account?
-            <a href="/signup"> Sign Up</a>
+            <a href="/signup">
+              {" "}
+              Sign Up
+            </a>
           </p>
 
         </div>
