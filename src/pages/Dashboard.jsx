@@ -22,9 +22,8 @@ function Dashboard() {
     navigate("/login");
   };
 const viewReports = () => {
-  alert("Opening Fraud Reports...");
+  navigate("/reports");
 };
-
 const goToTransactions = () => {
   document
     .getElementById("transactions")
