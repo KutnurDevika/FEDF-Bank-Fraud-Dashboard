@@ -244,20 +244,7 @@ tr:hover {
     overflow-x: auto;
   }
 }
-.logout-btn{
-  margin-top:15px;
-  background:#ef4444;
-  color:white;
-  border:none;
-  padding:10px 18px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
-}
 
-.logout-btn:hover{
-  background:#dc2626;
-}
 .alert-controls{
   display:flex;
   gap:15px;

@@ -234,12 +234,7 @@ useEffect(() => {
             <p>5 June 2026 • 10:48 AM</p>
           </div>
 
-          <button
-            className="logout-btn"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
+          
 
         </div>
 
