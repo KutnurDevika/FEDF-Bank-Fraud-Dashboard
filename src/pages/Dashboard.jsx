@@ -21,7 +21,46 @@ function Dashboard() {
     localStorage.removeItem("isLoggedIn");
     navigate("/login");
   };
+const viewReports = () => {
+  alert("Opening Fraud Reports...");
+};
 
+const goToTransactions = () => {
+  document
+    .getElementById("transactions")
+    ?.scrollIntoView({ behavior: "smooth" });
+};
+
+const exportData = () => {
+  const data = JSON.stringify(alerts, null, 2);
+
+  const blob = new Blob([data], {
+    type: "application/json",
+  });
+
+  const link = document.createElement("a");
+
+  link.href = URL.createObjectURL(blob);
+  link.download = "fraud-alerts.json";
+
+  link.click();
+};
+
+const securityLogs = () => {
+  alert(
+    "Security Logs\n\nFirewall Active\nDatabase Secure\nNo Threats Detected"
+  );
+};
+
+const riskAssessment = () => {
+  const critical = alerts.filter(
+    (alert) => alert.risk === "Critical"
+  ).length;
+
+  alert(
+    `Current Critical Alerts: ${critical}`
+  );
+};
   const generateAlert = () => {
 
   const randomId =
@@ -54,7 +93,7 @@ function Dashboard() {
   setAlerts((prevAlerts) => [
   newAlert,
   ...prevAlerts
-]);
+]);+
 
   alert("🚨 Fraud Alert Generated!");
 };
@@ -238,34 +277,33 @@ function Dashboard() {
 
         <div className="card">
 <h2>Quick Actions</h2>
-        <div className="actions-grid">
+       <div className="actions-grid">
 
   <button onClick={generateAlert}>
     Generate Alert
   </button>
 
-  <button>
+  <button onClick={viewReports}>
     View Reports
   </button>
 
-  <button>
+  <button onClick={goToTransactions}>
     Monitor Transactions
   </button>
 
-  <button>
+  <button onClick={exportData}>
     Export Data
   </button>
 
-  <button>
+  <button onClick={securityLogs}>
     Security Logs
   </button>
 
-  <button>
+  <button onClick={riskAssessment}>
     Risk Assessment
   </button>
 
 </div>
-
         </div>
 
       </div>
@@ -356,7 +394,7 @@ function Dashboard() {
       </div>
 
       {/* Transactions */}
-      <div className="card">
+      <div className="card" id="transactions">
 
         <h2>Recent Transactions</h2>
 
