@@ -8,10 +8,11 @@ function Navbar() {
   const isLoggedIn =
     localStorage.getItem("isLoggedIn") === "true";
 
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    navigate("/login");
-  };
+ const handleLogout = () => {
+  localStorage.removeItem("isLoggedIn");
+  navigate("/login");
+  window.location.reload();
+};
 
   return (
     <nav className="navbar">
@@ -21,7 +22,8 @@ function Navbar() {
       </div>
 
       <div className="nav-links">
-<Link to="/">Home</Link>
+
+        <Link to="/">Home</Link>
 
         <Link to="/about">
           About
@@ -30,6 +32,12 @@ function Navbar() {
         <Link to="/contact">
           Contact
         </Link>
+
+        {isLoggedIn && (
+          <Link to="/dashboard">
+            Dashboard
+          </Link>
+        )}
 
         {!isLoggedIn ? (
           <>
@@ -42,18 +50,12 @@ function Navbar() {
             </Link>
           </>
         ) : (
-          <>
-            <Link to="/dashboard">
-              Dashboard
-            </Link>
-
-            <button
-              className="nav-logout"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          </>
+          <button
+            className="nav-logout"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         )}
 
       </div>

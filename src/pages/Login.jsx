@@ -28,12 +28,8 @@ const Login = () => {
       email === user.email &&
       password === user.password
     ) {
-      localStorage.setItem(
-        "isLoggedIn",
-        "true"
-      );
-
-      navigate("/dashboard");
+     localStorage.setItem("isLoggedIn", "true");
+window.location.href = "/dashboard";
     } else {
       setError("Invalid Email or Password");
     }

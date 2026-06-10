@@ -18,9 +18,10 @@ function Dashboard() {
   const [riskFilter, setRiskFilter] = useState("All");
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    navigate("/login");
-  };
+  localStorage.removeItem("isLoggedIn");
+  navigate("/login");
+  window.location.reload();
+};
 const viewReports = () => {
   navigate("/reports");
 };
