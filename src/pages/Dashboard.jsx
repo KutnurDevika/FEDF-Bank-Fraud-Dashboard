@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 
@@ -92,7 +92,7 @@ const riskAssessment = () => {
   setAlerts((prevAlerts) => [
   newAlert,
   ...prevAlerts
-]);+
+]);
 
   alert("🚨 Fraud Alert Generated!");
 };
@@ -104,7 +104,7 @@ const riskAssessment = () => {
     { value: "98.7%", title: "Detection Accuracy" }
   ];
 
-  const [alerts, setAlerts] = useState([
+const defaultAlerts = [
   {
     id: "ALT-00192",
     type: "Suspicious Login",
@@ -123,8 +123,24 @@ const riskAssessment = () => {
     risk: "Medium",
     status: "Resolved"
   }
-]);
+];
 
+const [alerts, setAlerts] = useState(() => {
+  const savedAlerts = localStorage.getItem("alerts");
+
+  return savedAlerts
+    ? JSON.parse(savedAlerts)
+    : defaultAlerts;
+});
+
+useEffect(() => {
+  localStorage.setItem(
+    "alerts",
+    JSON.stringify(alerts)
+  );
+}, [alerts]);
+
+ 
   const transactions = [
     {
       id: "TXN-88412",
