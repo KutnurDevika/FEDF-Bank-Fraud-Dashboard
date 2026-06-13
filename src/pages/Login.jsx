@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -24,15 +25,29 @@ const Login = () => {
       return;
     }
 
-    if (
-      email === user.email &&
-      password === user.password
-    ) {
-     localStorage.setItem("isLoggedIn", "true");
-window.location.href = "/dashboard";
-    } else {
-      setError("Invalid Email or Password");
-    }
+  setLoading(true);
+
+setTimeout(() => {
+if (
+  email === user.email &&
+  password === user.password
+) {
+  localStorage.setItem(
+    "isLoggedIn",
+    "true"
+  );
+
+  navigate("/dashboard");
+
+  window.location.reload();
+}
+else {
+    setError("Invalid Email or Password");
+  }
+
+  setLoading(false);
+
+}, 1500);
   };
 
   return (
@@ -124,9 +139,14 @@ window.location.href = "/dashboard";
 
             </div>
 
-            <button type="submit">
-              Login Securely
-            </button>
+          <button
+  type="submit"
+  disabled={loading}
+>
+  {loading
+    ? "Logging In..."
+    : "Login Securely"}
+</button>
 
             {error && (
               <p className="error">

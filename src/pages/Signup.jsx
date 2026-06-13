@@ -13,28 +13,55 @@ const Signup = () => {
 
   const [error, setError] = useState("");
 
+  
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
-    e.preventDefault();
+const handleSignup = (e) => {
+  e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
+  setError("");
 
-    const user = {
-      name,
-      email,
-      password,
-    };
+  if (password.length < 8) {
+    setError(
+      "Password must be at least 8 characters"
+    );
+    return;
+  }
 
-    localStorage.setItem("user", JSON.stringify(user));
+  if (!/[A-Z]/.test(password)) {
+    setError(
+      "Password must contain an uppercase letter"
+    );
+    return;
+  }
 
-    alert("Account Created Successfully!");
+  if (!/[0-9]/.test(password)) {
+    setError(
+      "Password must contain a number"
+    );
+    return;
+  }
 
-    navigate("/login");
+  if (password !== confirmPassword) {
+    setError("Passwords do not match");
+    return;
+  }
+
+  const user = {
+    name,
+    email,
+    password,
   };
+
+  localStorage.setItem(
+    "user",
+    JSON.stringify(user)
+  );
+
+  alert("Account Created Successfully!");
+
+  navigate("/login");
+};
 
   return (
     <div className="signup-page">
