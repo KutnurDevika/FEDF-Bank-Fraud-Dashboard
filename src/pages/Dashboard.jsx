@@ -18,10 +18,9 @@ function Dashboard() {
   const [riskFilter, setRiskFilter] = useState("All");
 
   const handleLogout = () => {
-  localStorage.removeItem("isLoggedIn");
-  navigate("/login");
-  window.location.reload();
-};
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  };
 const viewReports = () => {
   navigate("/reports");
 };
@@ -235,7 +234,12 @@ useEffect(() => {
             <p>5 June 2026 • 10:48 AM</p>
           </div>
 
-          
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
 
         </div>
 
