@@ -16,6 +16,7 @@ function Dashboard() {
 
   const [search, setSearch] = useState("");
   const [riskFilter, setRiskFilter] = useState("All");
+  const [analysts, setAnalysts] = useState([]);
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
@@ -139,7 +140,46 @@ useEffect(() => {
     JSON.stringify(alerts)
   );
 }, [alerts]);
-
+useEffect(() => {
+  fetch(
+    "https://jsonplaceholder.typicode.com/users"
+  )
+    .then((response) =>
+      response.json()
+    )
+    .then(() =>
+      setAnalysts([
+        {
+          id: 1,
+          name: "Arjun Mehta",
+          email: "arjun.mehta@fraudalert.com",
+        },
+        {
+          id: 2,
+          name: "Priya Sharma",
+          email: "priya.sharma@fraudalert.com",
+        },
+        {
+          id: 3,
+          name: "Rahul Gupta",
+          email: "rahul.gupta@fraudalert.com",
+        },
+        {
+          id: 4,
+          name: "Sneha Reddy",
+          email: "sneha.reddy@fraudalert.com",
+        },
+        {
+          id: 5,
+          name: "Vikram Patel",
+          email: "vikram.patel@fraudalert.com",
+        },
+      ])
+    )
+    .catch((error) =>
+      console.log(error)
+    );
+}, []);
  
   const transactions = [
     {
@@ -494,6 +534,24 @@ useEffect(() => {
         </div>
 
       </div>
+
+      <div className="card">
+
+  <h2>Security Analyst Team</h2>
+
+  {analysts.map((analyst) => (
+    <div key={analyst.id}>
+      <p>
+        <strong>{analyst.name}</strong>
+      </p>
+
+      <p>{analyst.email}</p>
+
+      <hr />
+    </div>
+  ))}
+
+</div>
 
     </div>
   );
