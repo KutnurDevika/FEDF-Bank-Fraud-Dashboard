@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {
+  useNavigate
+} from "react-router-dom";
 import "../styles/Dashboard.css";
 
 function Dashboard() {
 
   const navigate = useNavigate();
 
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    return <Navigate to="/login" />;
-  }
+ 
 
   const user = JSON.parse(
     localStorage.getItem("user")
