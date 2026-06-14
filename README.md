@@ -1,6 +1,10 @@
 # 🛡️ Bank Fraud Detection Alert Dashboard
 
-A React-based banking security dashboard designed to monitor fraud alerts, suspicious transactions, risk levels, and security activities in real time.
+A modern React-based fraud monitoring dashboard that simulates banking security operations through authentication, fraud alerts, analytics, reports, API integration, and real-time monitoring workflows.
+
+## 🌐 Live Demo
+
+[Live Application](https://fedf-bank-fraud-dashboard.vercel.app/)
 
 ## 🚀 Live Features
 
@@ -19,6 +23,8 @@ A React-based banking security dashboard designed to monitor fraud alerts, suspi
 - Banking Security Insights
 - Recent Activity Tracking
 - Recent Transactions Monitoring
+- Fraud Analytics Visualization using Recharts
+- Monthly Fraud Trend Analysis Chart
 
 ### Alert Management
 - Generate Fraud Alerts
@@ -39,6 +45,18 @@ A React-based banking security dashboard designed to monitor fraud alerts, suspi
 - Dynamic Navigation
 - Responsive Dashboard Layout
 
+### API Integration
+- Fetch API Integration
+- Dynamic Analyst Data Rendering
+- Real-Time Data Handling using useEffect
+
+### Cloud & DevOps
+- Deployed on Vercel
+- CI/CD Pipeline (Future Enhancement)
+- Automated Testing
+- Performance Monitoring
+- Production Logging
+
 ### React Features Used
 - React Components
 - React Router DOM
@@ -51,6 +69,8 @@ A React-based banking security dashboard designed to monitor fraud alerts, suspi
 - API Integration using Fetch API
 - Local Storage Persistence
 - Recharts Data Visualization
+
+
 
 ---
 
@@ -94,6 +114,7 @@ src/
 - Fetch API
 - Recharts
 - Git & GitHub
+- Vercel
 
 
 ---
@@ -101,7 +122,7 @@ src/
 ## 📌 Major Development Milestones
 
 ### Version 1.0
-### Version 1.0
+
 - Authentication System
 - Protected Routes
 - Dashboard Analytics
@@ -110,6 +131,8 @@ src/
 - Local Storage Persistence
 - API Integration
 - Reports Module
+- Dashboard Monitoring
+- Deployment on Vercel
 
 
 ---
@@ -143,12 +166,13 @@ This project is currently frontend-focused and serves as the foundation for a la
 - Email & SMS Alerts
 - Multi-User Management
 
-### Cloud & DevOps
-- Vercel Deployment
-- CI/CD Pipeline
-- Automated Testing
-- Performance Monitoring
-- Production Logging
+---
+
+## Deployment
+
+- Hosted on Vercel
+- Production Build using Vite
+- GitHub Integrated Auto Deployment
 
 ---
 
@@ -169,6 +193,8 @@ This project demonstrates:
 - Data Visualization & Analytics Dashboards
 - Interactive Chart Development
 - Deployment-Ready React Architecture
+
+
 
 ---
 
