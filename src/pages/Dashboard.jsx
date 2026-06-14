@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer
+} from "recharts";
+import {
   useNavigate
 } from "react-router-dom";
 import "../styles/Dashboard.css";
@@ -243,6 +252,15 @@ useEffect(() => {
 
     return matchesSearch && matchesRisk;
   });
+
+  const fraudData = [
+  { month: "Jan", alerts: 120 },
+  { month: "Feb", alerts: 180 },
+  { month: "Mar", alerts: 150 },
+  { month: "Apr", alerts: 220 },
+  { month: "May", alerts: 190 },
+  { month: "Jun", alerts: 247 }
+];
 
   return (
     <div className="dashboard">
@@ -553,6 +571,26 @@ useEffect(() => {
 
 </div>
 
+
+<div className="card">
+  <h2>Fraud Analytics Chart</h2>
+
+  <ResponsiveContainer
+    width="100%"
+    height={300}
+  >
+    <BarChart data={fraudData}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="month" />
+      <YAxis />
+      <Tooltip />
+      <Bar
+        dataKey="alerts"
+        fill="#2563eb"
+      />
+    </BarChart>
+  </ResponsiveContainer>
+</div>
     </div>
   );
 }
