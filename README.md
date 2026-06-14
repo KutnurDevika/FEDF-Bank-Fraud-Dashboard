@@ -50,6 +50,7 @@ A React-based banking security dashboard designed to monitor fraud alerts, suspi
 - Dynamic Rendering using map()
 - API Integration using Fetch API
 - Local Storage Persistence
+- Recharts Data Visualization
 
 ---
 
@@ -91,20 +92,25 @@ src/
 - CSS3
 - Local Storage API
 - Fetch API
+- Recharts
 - Git & GitHub
+
 
 ---
 
 ## 📌 Major Development Milestones
 
 ### Version 1.0
+### Version 1.0
 - Authentication System
 - Protected Routes
 - Dashboard Analytics
+- Fraud Analytics Visualization
 - Alert Management
 - Local Storage Persistence
 - API Integration
 - Reports Module
+
 
 ---
 
@@ -160,6 +166,8 @@ This project demonstrates:
 - Data Persistence
 - Form Validation
 - Dynamic UI Rendering
+- Data Visualization & Analytics Dashboards
+- Interactive Chart Development
 - Deployment-Ready React Architecture
 
 ---
