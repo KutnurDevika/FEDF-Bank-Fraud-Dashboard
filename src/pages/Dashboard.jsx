@@ -107,12 +107,12 @@ const riskAssessment = () => {
   alert("🚨 Fraud Alert Generated!");
 };
 
-  const stats = [
-    { value: "247", title: "Active Fraud Alerts" },
-    { value: "1,84,392", title: "Transactions Monitored" },
-    { value: "38", title: "High Risk Cases" },
-    { value: "98.7%", title: "Detection Accuracy" }
-  ];
+const stats = [
+  { value: "247", title: "Active Fraud Alerts" },
+  { value: "1,84,392", title: "Demo Transactions" },
+  { value: "38", title: "High Risk Cases" },
+  { value: "98.7%", title: "Security Score" }
+];
 
 const defaultAlerts = [
   {
@@ -212,11 +212,11 @@ useEffect(() => {
   ];
 
   const analytics = [
-    "Fraud Detection Accuracy - 98.7%",
-    "Alert Resolution Rate - 87.4%",
-    "Monitoring Performance - 94.1%",
-    "System Health Score - 99.2%"
-  ];
+  "Risk Analysis Coverage - 98.7%",
+  "Alert Resolution Rate - 87.4%",
+  "Dashboard Performance - 94.1%",
+  "System Health Score - 99.2%"
+];
 
   const monitoring = [
     "Monitoring Active",

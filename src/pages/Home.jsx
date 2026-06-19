@@ -24,9 +24,7 @@ const Home = () => {
       </h1>
 
       <p>
-        Monitor suspicious banking transactions, detect fraudulent
-        activities, and strengthen financial security through
-        intelligent alert management and real-time monitoring.
+        Monitor fraud alerts, analyze risk patterns, and visualize banking security data through an interactive dashboard built with React.
       </p>
 
       <div className="hero-buttons">
