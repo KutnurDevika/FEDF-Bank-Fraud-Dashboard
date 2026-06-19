@@ -8,7 +8,7 @@ function Footer() {
       <h3>Bank Fraud Detection Alert Dashboard</h3>
 
       <p>
-        Real-Time Banking Security and Fraud Monitoring System
+      React-Based Banking Security Dashboard
       </p>
 
       <div className="footer-links">

@@ -272,8 +272,7 @@ useEffect(() => {
           <h1>🛡️ Bank Fraud Detection Alert Dashboard</h1>
 
           <p>
-            Monitor fraud alerts, suspicious transactions
-            and banking security activities in real time.
+            Monitor fraud alerts, analyze risk patterns, and visualize banking security data through an interactive dashboard.
           </p>
 
           <h3>
